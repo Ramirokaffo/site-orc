@@ -9,13 +9,11 @@ class ContactModel extends Model
     protected $table = 'contact';
     protected $primaryKey = 'id';
     protected $useAutoIncrement = true;
-    protected $useTimestamps = true;
 
 
     protected $allowedFields = ['value', 'type', "officeId"];
 
     protected $returnType = 'array';
-    protected $useSoftDeletes = true;
     
     public function getContact($id = false)
     {
@@ -24,6 +22,16 @@ class ContactModel extends Model
         }
 
         return $this->where(['id' => $id])->first();
+
+    }
+    
+    public function getOfficeContactByType($officeId, $type)
+    {
+        $sql = 'SELECT * FROM contact  
+        WHERE contact.type = ? AND contact.officeId = ?';
+        $query = $this->query($sql, [$type, $officeId]);
+        $results = $query->getResultArray("array");
+        return $results;
 
     }
 }

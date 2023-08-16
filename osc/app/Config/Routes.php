@@ -40,7 +40,7 @@ $routes->get('/', 'Home::index');
 // $routes->get(':page', "Page::view");
 $routes->match(['get', 'post'], 'search', [Home::class, 'search']);
 $routes->match(['get', 'post'], 'news/create/(:segment)', [News::class, 'create']);
-$routes->match(['get', 'post'], 'osc/create/(:segment)', [Osc::class, 'create']);
+$routes->match(['get', 'post'], 'osc/create/(:segment)/(:segment)/(:segment)', [Osc::class, 'create']);
 $routes->get('news/(:segment)', [News::class, 'view']);
 $routes->get('osc/(:segment)', [Osc::class, 'view']);
 $routes->get('goTo/(:segment)', [Osc::class, 'goTo']);

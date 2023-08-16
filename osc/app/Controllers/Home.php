@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\CategoryModel;
 use App\Models\DomainModel;
+use App\Models\OscModel;
 use App\Models\ReclamationModel;
 
 
@@ -13,15 +14,13 @@ class Home extends BaseController
     {
         $categoryModel = model(CategoryModel::class);
         $domainModel = model(DomainModel::class);
-        $reclamationModel = model(ReclamationModel::class);
+        $oscModel = model(OscModel::class);
             $data = [
                 'categories'  => $categoryModel->getCategory(),
                 'domains'  => $domainModel->getDomain(),
                 "miniSearchInput" => '',
-                // "searchInput" => '',
-                'reclamations' => $reclamationModel->select('reclamation.*, category.name as category_name')
-                    ->join('category', 'category.id = reclamation.categoryId', 'left')
-                    ->getReclamation(),
+                "searchInput" => '',
+                'oscs' => $oscModel->getOsc(),
                 'title' => "Page d'acceuil YOONU",
             ];
         return view('home/home', $data);
@@ -33,19 +32,32 @@ class Home extends BaseController
         helper(['form']);
         $categoryModel = model(CategoryModel::class);
         $domainModel = model(DomainModel::class);
-        $reclamationModel = model(ReclamationModel::class);
+        $oscModel = model(OscModel::class);
 
         
-        $searchInput = $this->request->getVar('searchInput');
+        $miniSearchInput = $this->request->getVar('miniSearchInput');
+        $searchInput = $this->request->getVar("searchInput");
+            if (!$searchInput) {
+                $data = [
+                    'categories'  => $categoryModel->getSearchResult($miniSearchInput),
+                    "miniSearchInput" => $miniSearchInput,
+                    "searchInput" => $searchInput,
+                    'domains'  => $domainModel->getSearchResult($miniSearchInput),
+                    'title' => "Resultat de recherche",
+                    'oscs' =>  $oscModel->getOsc(),
+                ];
+        } else {
             $data = [
-                'categories'  => $categoryModel->getSearchResult($searchInput),
-                "miniSearchInput" => $searchInput,
-                'domains'  => $domainModel->getSearchResult($searchInput),
-                'reclamations' => $reclamationModel->select('reclamation.*, category.name as category_name')
-                    ->join('category', 'category.id = reclamation.categoryId', 'left')
-                    ->getReclamation(),
+                'categories'  => $categoryModel->getCategory(),
+                "miniSearchInput" => $miniSearchInput,
+                "searchInput" => $searchInput,
+                'domains'  => $domainModel->getDomain(),
                 'title' => "Resultat de recherche",
+                'oscs' =>  $oscModel->getSearchResult($searchInput),
             ];
+        }  
             return view('home/home', $data);
     }
+
+    
 }

@@ -10,7 +10,7 @@ class ReclamationModel extends Model
     protected $primaryKey = 'id';
     protected $useAutoIncrement = true;
 
-    protected $allowedFields = ["name", "creationDate", "matricule", "webSite", "phoneNumber1", "phoneNumber2", "email", "city", "country", "location", "categoryId", "domainId", "userId"];
+    protected $allowedFields = ["name", "creationDate", "matricule", "webSite", "phoneNumber1", "phoneNumber2", "email", "city", "country", "location", "categoryId", "domainId", "userId", "long", "lat"];
     protected $returnType = 'array';
     protected $useSoftDeletes = true;
 
@@ -40,7 +40,7 @@ class ReclamationModel extends Model
         $builder = $this->table('reclamation');
         $builder->select('reclamation.*, category.name as category_name');
         $builder->where("domainId", $domainId);
-        $builder->join('category', 'category.id = reclamation.domainId', 'left');
+        $builder->join('category', 'category.id = reclamation.categoryId', 'left');
         $query = $builder->get();
         $results = $query->getResultArray();
         return $results;
@@ -56,6 +56,17 @@ class ReclamationModel extends Model
         $results = $query->getResultArray();
         // var_dump($results);
 
+        return $results;
+    }
+
+
+    public function getSearchResult($searchInput)
+    {
+        $results = $this->select('reclamation.*, category.name as category_name')
+        // ->where("name", $searchInput)
+        ->like("reclamation.name", $searchInput)
+        ->join('category', 'category.id = reclamation.categoryId', 'left')
+        ->getReclamation();
         return $results;
     }
 

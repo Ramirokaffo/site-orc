@@ -15,8 +15,8 @@
 <div class="one-osc-details-tap-item">
     <div>
         <div class="one-osc-selected-tab"><?= anchor('/', 'À PROPOS') ?> </div>
-        <div><?= anchor('news', 'ÉVÈNEMENTS') ?></div>
-        <div><?= anchor('news', 'JOBS') ?></div>
+        <div><?= anchor('/', 'ÉVÈNEMENTS') ?></div>
+        <div><?= anchor('/', 'JOBS') ?></div>
     </div>
 </div>
 <!-- <p style="color: black;">La page des detalis</p> -->

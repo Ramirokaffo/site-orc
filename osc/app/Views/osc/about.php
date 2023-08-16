@@ -1,5 +1,9 @@
 <div class="one-osc-about-tab-content">
-    <p class="one-osc-about-tab-content-desc">La description d'une Organisme de la société civile</p>
+    <p class="one-osc-about-tab-content-desc"><?= esc($osc["description"]) ?></p>
+    <div class="reclamation-action-zone">
+        <h6>Cette Association vous appartient ?</h6>
+        <?= anchor('/osc/create/1/' . $osc["id"] . "/0", 'Réclamer') ?>
+    </div>
     <div class="one-osc-about-tab-content-bloc">
         <h3>NOS INFORMATIONS LÉGALES</h3>
         <div class="tab-content-bloc-start-line"></div>
@@ -21,11 +25,11 @@
         </div>
         <div class="one-line-osc-details">
             <p class="details-title">Slogan</p>
-            <p class="details-value">//</p>
+            <p class="details-value"><?= esc($osc["slogan"]) ?></p>
         </div>
         <div class="one-line-osc-details">
             <p class="details-title">Site web</p>
-            <p class="details-value"><a href="#"><?= esc($osc["webSite"]) ?></a></p>
+            <p class="details-value"><a href="https://<?= esc($osc["webSite"]) ?>"><?= esc($osc["webSite"]) ?></a></p>
         </div>
 
     </div>
@@ -33,18 +37,24 @@
     <div class="one-osc-about-tab-content-bloc">
         <h3>CONTACTS ET LOCALISATION</h3>
         <div class="tab-content-bloc-start-line"></div>
-        <div class="one-line-osc-details">
-            <p class="details-title">Numero de téléphone 1</p>
-            <p class="details-value"><?= esc($osc["phoneNumber1"]) ?></p>
-        </div>
-        <div class="one-line-osc-details">
-            <p class="details-title">Numéro de téléphone 2</p>
-            <p class="details-value"><?= esc($osc["phoneNumber2"]) ?></p>
-        </div>
-        <div class="one-line-osc-details">
-            <p class="details-title">Adresse mail</p>
-            <p class="details-value"><?= esc($osc["email"]) ?></p>
-        </div>
+
+        <?php if (!empty($osc["phones"]) && is_array($osc["phones"])) : ?>
+
+            <?php foreach ($osc["phones"] as $index => $phone) : ?>
+                <div class="one-line-osc-details">
+                    <p class="details-title">Numero de téléphone <?= $index + 1 ?></p>
+                    <p class="details-value"><?= esc($phone["value"]) ?></p>
+                </div>
+            <?php endforeach ?>
+        <?php endif ?>
+        <?php if (!empty($osc["phones"]) && is_array($osc["phones"])) : ?>
+            <?php foreach ($osc["emails"] as $index => $email) : ?>
+                <div class="one-line-osc-details">
+                    <p class="details-title">Adresse mail <?= $index + 1 ?></p>
+                    <p class="details-value"><?= esc($email["value"]) ?></p>
+                </div>
+            <?php endforeach ?>
+        <?php endif ?>
         <div class="one-line-osc-details">
             <p class="details-title">Localisation</p>
             <p class="details-value"><?= esc($osc["location"]) ?></p>

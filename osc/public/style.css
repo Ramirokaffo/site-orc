@@ -24,50 +24,88 @@ header {
     width: 100%;
     z-index: 10;
     background-color: white;
+    padding-top: 15px;
+    padding-bottom: 10px;
 }
 
 .yoonu-logo {
     height: 30px;
     width: 80px;
     flex: 1;
-    margin: auto;
-    text-align: center;
+    margin: auto 30px;
+    text-align: left;
 
 }
+
+.yoonu-logo2 {
+    display: none;
+}
+
 
 
 .header-titles {
     display: inline;
     margin: auto;
-    padding: 20px;
     flex: 3;
     text-align: center;
+    height: 100%;
 
+}
+
+header .uk-margin {
+    display: none;
+}
+
+.header-titles .empty-space {
+    display: none;
 }
 
 .header-titles li {
     display: inline;
-
 }
 
 .header-titles li a {
     display: inline;
-    padding: 0px 10px;
+    padding: 10px 10px;
     color: black;
+    margin: auto 0px;
     text-decoration: none;
+}
 
+.header-titles li a:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    transition: background-color 1s;
+}
+
+.nav-mobile {
+    color: black !important;
 
 }
 
-.add-org-button {
+nav input[type=checkbox],
+.nav-mobile {
+    display: none;
+}
+
+nav input[type=checkbox]:checked~ul {
+    display: block;
+    color: black;
+    background-color: white;
+}
+
+
+.add-org-button,
+.add-org-button2 {
     flex: 2;
-    height: 20px;
+    height: 30px;
     margin: auto;
     text-align: center;
     display: block;
 }
 
-.add-org-button a {
+.add-org-button a,
+.add-org-button2 a {
     background-color: var(--main-color);
     width: 10px;
     margin: auto;
@@ -76,6 +114,10 @@ header {
     text-decoration: none;
     color: white;
 
+}
+
+.add-org-button2 {
+    display: none;
 }
 
 /****************************************************************************
@@ -89,6 +131,7 @@ header {
 /****************************************************************************
                 ACCUEIL CONTENT
 *****************************************************************************/
+
 .home-head {
     padding-top: 70px;
     height: 400px;
@@ -117,7 +160,7 @@ header {
 .home-head .search-section input {
     height: 92%;
     width: 100%;
-    flex: 12;
+    flex: 11;
     font-size: 20px;
     padding-left: 30px;
 }
@@ -132,17 +175,14 @@ header {
 }
 
 .search-section button span svg {
-    /* background-color: red !important; */
-    /* color: yellow !important; */
     font-weight: bold;
-    height: 60%;
-    width: 60%;
-    
+    height: 90%;
+    width: 90%;
+
 }
 
 
 .home-body {
-    /* height: 1000px; */
     width: 80%;
     margin: auto;
     display: flex;
@@ -210,7 +250,6 @@ header {
 
 .osc-category,
 .osc-domain {
-    /* height: 400px; */
     border-radius: 5px;
     margin: 40px 0px;
     background-color: white;
@@ -230,38 +269,19 @@ header {
     background-color: var(--main-color);
 }
 
-/* .uk-icon[uk-icon="heart"] svg path {
-    fill: #ff0000;
-    color: yellow;
-    background-color: yellow;
-    border-color: orange;
-    }
+.no-categoryor-domain {
+    color: var(--main-color);
+}
 
-    .uk-icon[uk-icon="icon:heart"] svg {
-        color: white;
-    }
-
-    .uk-icon{
-        color: white;
-        }
-
-        span[uk-icon="*"] svg{
-            color:white;
-            } */
 
 .osc-sort {
     text-align: right;
     position: relative;
 }
 
-/* .uk-margin {
-    background-color: blue;
-} */
 
 .home-body .home-body-right {
-    height: 1000px;
     margin: 0px auto;
-    /* background-color: red; */
     flex: 7;
 }
 
@@ -269,26 +289,24 @@ header {
 
 .home-body .home-body-right .one-osc {
     height: 150px;
-    /* background-color: chocolate; */
     margin: 20px;
+    margin-top: 0px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+
 }
 
 .home-body .home-body-right .one-osc:hover {
     cursor: pointer;
-} 
+}
 
 .home-body .home-body-right .one-osc div {
     height: 80%;
-    /* background-color: orange; */
     display: flex;
     padding: 10px 0px;
 
 }
 
-.one-osc {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 
-}
 
 .one-osc:hover {
     background-color: rgba(0, 102, 83, 0.05);
@@ -304,12 +322,10 @@ header {
 
 .home-body .home-body-right .one-osc div .osc-logo-container {
     flex: 1;
-    /* background-color: hotpink; */
 }
 
 
 .home-body .home-body-right .one-osc div .osc-logo-container .osc-logo {
-    /* background-color: mediumaquamarine; */
     background-size: contain;
     border-radius: 50%;
     height: 80px;
@@ -324,13 +340,11 @@ header {
 
 .home-body .home-body-right .one-osc div .osc-right {
     flex: 4;
-    /* background-color: cyan; */
     margin: 0px 20px;
 
 }
 
 .home-body .home-body-right .one-osc div .osc-right div {
-    /* background-color: darkolivegreen; */
     padding: 0px;
     margin: 0px;
     width: 100%;
@@ -343,19 +357,19 @@ header {
 .home-body .home-body-right .one-osc div .osc-right div .osc-header {
     flex: 1;
     width: 100%;
-color: black;
-text-decoration: none;
+    color: black;
+    text-decoration: none;
 }
 
 .osc-right div .osc-header ul span {
     border-radius: 50%;
-    color: green;
-    background-color: rebeccapurple;
+    /* color: green; */
+    /* background-color: rebeccapurple; */
     height: 10px;
     width: 10px;
 }
 
-.osc-right div .osc-header p  {
+.osc-right div .osc-header p {
     display: inline;
     font-size: 13px;
     color: rgba(0, 0, 0, 0.5);
@@ -373,6 +387,14 @@ text-decoration: none;
     font-size: 23px;
 }
 
+
+.no-osc-to-show {
+    color: var(--main-color);
+    font-weight: bold;
+    font-size: 25px;
+    text-align: center;
+    margin-top: 50px;
+}
 
 
 
@@ -424,7 +446,7 @@ text-decoration: none;
     height: 200px;
     width: 200px;
     position: absolute;
-    top: -100px ;
+    top: -100px;
     left: 100px;
     background-size: contain;
     background-position: center;
@@ -456,12 +478,13 @@ text-decoration: none;
     margin: auto;
     width: 400px;
     border-right: 1px solid rgba(73, 72, 72, 0.2);
+    border-left: 1px solid rgba(73, 72, 72, 0.2);
     text-align: center;
 
 }
 
 .one-osc-details-tap-item div div {
-   flex: 1;
+    flex: 1;
     padding: 10px 0px;
     margin: 0px;
     border-right: 1px solid rgba(73, 72, 72, 0.2);
@@ -481,7 +504,7 @@ text-decoration: none;
 }
 
 .one-osc-selected-tab {
-    border-top: 3px solid var(--main-color); 
+    border-top: 3px solid var(--main-color);
     color: var(--main-color);
 
 }
@@ -502,10 +525,28 @@ text-decoration: none;
 }
 
 .one-osc-about-tab-content p {
-    color: black;    
+    color: black;
 
 }
 
+.reclamation-action-zone {
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 2px 5px;
+    margin-top: 20px;
+}
+.reclamation-action-zone h6 {
+    color: var(--main-color);
+    display: inline;
+}
+
+.reclamation-action-zone a {
+    color: var(--main-color);
+    font-weight: bold;    
+}
+
+.reclamation-action-zone a:hover {
+    color: blue;
+}
 
 .one-osc-about-tab-content p a {
     color: black;
@@ -616,10 +657,6 @@ text-decoration: none;
 }
 
 
-.banner-cover-center {
-    /* background-color: blueviolet; */
-    /* margin: 100px; */
-}
 
 /****************************************************************************
                 FORM STEP
@@ -658,7 +695,8 @@ text-decoration: none;
 }
 
 
-.valid-step, .invalid-step {
+.valid-step,
+.invalid-step {
     border-radius: 50%;
     height: 20px;
     margin: auto;
@@ -672,11 +710,12 @@ text-decoration: none;
 .valid-step {
     background-color: var(--main-color);
     color: white;
-    
+
 
 }
 
-.valid-step-line, .invalid-step-line {
+.valid-step-line,
+.invalid-step-line {
     height: 7px;
     width: 90px;
     border-radius: 20px;
@@ -692,7 +731,7 @@ text-decoration: none;
     margin: 0px;
     padding: 0px;
     background-color: var(--main-color);
-    
+
 }
 
 .complete-line-step {
@@ -723,7 +762,6 @@ text-decoration: none;
     margin-top: 0px;
     background-color: white;
     height: 600px;
-    /* width: 2000px; */
     text-align: left;
     z-index: 1;
     border: 10px solid white;
@@ -736,17 +774,23 @@ text-decoration: none;
 
 .form-n1 form {
     width: 100%;
-    /* background-color: darkblue; */
 }
 
-.form-n1 input, .form-n2 input, .form-n3 input, .form-n5 input {
-    width: 100%;
+.form-n1 input,
+.form-n2 input,
+.form-n3 input,
+.form-n5 input,
+.country_select {
+    width: 93%;
     height: 40px;
     border-radius: 10px;
     margin: 20px auto;
     padding: 7px 15px;
     border: 1px solid rgba(0, 0, 0, 0.2);
-    /* background-color: greenyellow; */
+}
+.country_select {
+    width: 99%;
+    height: 50px;
 }
 
 .category-domain-field {
@@ -794,6 +838,7 @@ text-decoration: none;
     color: white;
     border: none;
     margin-top: 30px;
+    cursor: pointer;
 }
 
 .form-finish-content {
@@ -841,7 +886,9 @@ text-decoration: none;
  ************************************************************/
 
 
-.submit-button-n1, .submit-button-n2, .prev-button-n2 {
+.submit-button-n1,
+.submit-button-n2,
+.prev-button-n2 {
     background-color: var(--main-color);
     height: 50px;
     border: 0px solid;
@@ -900,16 +947,16 @@ footer {
     /* height: 500px; */
     background-color: rgb(29, 29, 27);
     padding: 10px 120px 25px 120px;
-    text-align: justify;
+    text-align: left;
+    font-family: A;
+    margin-top: 20px;
 
 }
 
 footer .footer-content {
-    /* height: 400px; */
     width: 100%;
     padding: 20px 0px 0px 0px;
     display: flex;
-    /* background-color: red; */
 }
 
 
@@ -955,6 +1002,24 @@ footer div div ul li {
 
 }
 
+.uk-inline {
+    width: 100%;
+
+}
+
+#uk-form-icon-right {
+    background-color: var(--main-color);
+    margin: 2px;
+    color: white;
+}
+
+.uk-inline input {
+    background-color: rgb(29, 29, 27);
+    /* border: none !important; */
+    border: 1px solid (--main-color);
+    width: 100%;
+}
+
 
 footer hr {
     margin: 20px 0px;
@@ -964,6 +1029,373 @@ footer hr {
     border: 0px;
 }
 
+
 footer em {
     color: white;
 }
+
+
+
+
+
+
+
+
+
+
+/*****************************************************
+                MEDIA QUERIE PHONE
+ ******************************************************/
+
+@media screen and (max-width: 901px) {
+
+    header {
+        display: flex;
+        position: fixed;
+        width: 100%;
+        z-index: 10;
+        height: 50px;
+        margin-top: 0px;
+        padding-top: 0px;
+
+    }
+    .nav-section {
+        display: none;
+    }
+    header .uk-margin {
+    padding: 0px;
+    margin: 0px;
+    display: block;
+}
+ 
+    .uk-inline {
+        border: none !important;
+        margin: 0px;
+        padding: 0px;
+        text-align: start;
+
+    }
+    .uk-button {
+        margin: 0px;
+        border: none !important;
+
+    }
+
+    .uk-nav li a {
+        padding: 10px 2px;
+
+
+    }
+
+    .uk-nav li a:hover {
+        background-color: rgba(0, 102, 83, 0.05);
+    }
+
+    nav {
+        text-align: center;
+        flex: 1;
+        position: relative;
+        background-color: blue !important;
+        /* display: none; */
+    }
+
+
+
+    .yoonu-logo2 {
+        text-align: left;
+        height: 30px;
+        padding-left: 10px;
+        padding-bottom: 20px;
+        z-index: 6;
+    }
+
+    .yoonu-logo2 img {
+        height: 100%;
+        flex: 1;
+        text-align: left;
+
+    }
+
+
+    .yoonu-logo2 div input {
+        color: rebeccapurple;
+        background-color: aquamarine;
+        width: 200px;
+        height: 100%;
+    }
+
+    .yoonu-logo2 div input[type=checkbox]:checked~ul {
+        display: block;
+        color: black;
+        background-color: white;
+    }
+
+
+
+    .nav-mobile-open {
+        color: black !important;
+
+    }
+
+
+    .header-titles {
+        display: none;
+        width: 50%;
+        flex: 1;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+
+    }
+
+    .header-titles li {
+        display: block;
+        text-align: left;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        padding: 10px 0px;
+        margin-top: 10px;
+    }
+
+    .nav-mobile {
+        display: block;
+        font-size: 40px;
+        color: #fff;
+        background-color: red;
+        cursor: pointer;
+        text-align: right;
+    }
+
+    .add-org-button {
+        display: none;
+        text-align: left;
+    }
+
+    .empty-space {
+        height: 20px;
+        width: 100%;
+        display: block;
+    }
+
+    .add-org-button2 {
+        text-align: left;
+        width: 100%;
+        padding: 0px;
+        display: block;
+
+    }
+
+    .add-org-button a {
+        font-size: 10px;
+    }
+
+    .add-org-button2 a {
+        text-align: left;
+        width: 100%;
+        padding: 10px 0px;
+        padding: 10px;
+
+    }
+
+
+
+    /****************************************************************************
+                ACCUEIL CONTENT
+*****************************************************************************/
+
+
+    .home-head h1 {
+        font-size: 30px;
+        margin: 50px 15%;
+
+    }
+
+
+    .home-head .search-section {
+        height: 45px;
+    width: 80%;
+
+    }
+
+    .home-head .search-section input {
+        flex: 7;
+        font-size: 17px;
+    }
+
+
+    .home-body {
+        margin: auto;
+        flex-flow: row wrap;
+        padding: 10px 0px;
+        width: 95%;
+
+    }
+
+    .home-body .home-body-left {
+        margin: 20px;
+        order: 1 !important;
+    }
+
+    .home-body .home-body-right {
+        margin: 0px auto;
+        order: 0 !important;
+    }
+
+    .home-body .home-body-right .one-osc {
+        height: 170px;
+        margin: 20px 5px;
+    }
+
+    .one-osc div .osc-right div .osc-title b {
+        font-size: 19px;
+    }
+
+    .no-osc-to-show {
+        height: 100%;
+    }
+    
+
+
+
+
+    /****************************************************************************
+                OSC DETAILS CONTENT
+*****************************************************************************/
+
+
+    .one-osc-details-logo {
+        height: 100px;
+        width: 100px;
+        top: -50px;
+        left: 30px;
+    }
+
+    .one-osc-details-title {
+        height: 20%;
+        text-align: center;
+    
+    }
+    
+
+.one-osc-details-title h2 {
+    margin: auto;
+    padding-top: 20px;
+    line-height: 110px;
+    background-color: var(--main-color);
+    text-align: center;
+    font-size: 20px;
+}
+
+
+    /****************************************************************************
+                OSC DETAILS TAB BAR
+*****************************************************************************/
+
+
+    .one-osc-details-tap-item {
+        margin-left: 20px;
+        margin-right: 20px;
+        margin-top: 30px;
+
+    }
+
+    /****************************************************************************
+                TAB A PROPOS D'UNE OSC
+*****************************************************************************/
+
+    .one-osc-about-tab-content {
+        padding: 50px 20px;
+    }
+
+
+
+
+    /****************************************************************************
+                CREATE OSC FORM
+*****************************************************************************/
+
+
+
+    /****************************************************************************
+                FORM STEP
+*****************************************************************************/
+
+
+    .form-step {
+        padding: 20px 0px;
+        width: 98%;
+        border-radius: 0px;
+    }
+
+    .valid-step,
+    .invalid-step {
+        height: 20px;
+        width: 20px;
+        padding: 5px;
+        line-height: 20px;
+
+    }
+
+    .valid-step-line,
+    .invalid-step-line {
+        width: 60px;
+        margin: auto 5px;
+    }
+
+
+
+    /****************************************************************************
+                FORM CONTENT
+*****************************************************************************/
+
+
+
+    .form-content {
+        padding: 0px 5%;
+        padding: 10px;
+        /* background-color: hotpink; */
+    }
+
+    .form-content h4 {
+        padding: 20px 0px;
+        padding-top: 0px;
+    }
+
+
+
+
+    /****************************************************************************
+                FOOTER
+*****************************************************************************/
+
+    footer {
+        padding: 5px 20px;
+        text-align: left;
+        font-family: A;
+
+    }
+
+    footer .footer-content {
+        width: 100%;
+        padding: 10px 0px 0px 0px;
+        display: inline-block;
+    }
+
+    .footer-content-center {
+        display: none;
+    }
+
+
+}
+
+
+
+
+
+
+
+/*****************************************************
+                MEDIA QUERIE TABLETTE
+ ******************************************************/
+
+
+@media screen and (min-width: 901px) and (max-width: 1200px) {}

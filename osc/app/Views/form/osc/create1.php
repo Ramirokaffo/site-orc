@@ -1,12 +1,12 @@
 <?= $this->extend('form/osc/base-form') ?>
-<?= helper('cookie');?>
+<?= helper('cookie'); ?>
 <?= $this->section('form-step') ?>
 <?= $this->include('form/osc/form-step') ?>
 <?= $this->endSection() ?>
 
 <?= $this->section('form-content') ?>
 <h4>Informations sur l'organisation</h4>
-<?= form_open("osc/create/$step") ?>
+<?= form_open("osc/create/1/$oscId/0") ?>
 
 <?= validation_list_errors() ?>
 
@@ -24,7 +24,11 @@
             <select name="category" id="category" required>
                 <?php if (!empty($categories) && is_array($categories)) : ?>
                     <?php foreach ($categories as $category) : ?>
-                        <option value="<?= $category["id"] ?>"><?= $category["name"] ?></option>
+                        <?php if (esc($category["name"]) == esc(get_cookie("category"))) { ?>
+                            <option selected value="<?= $category["id"] ?>"><?= $category["name"] ?></option>
+                        <?php } else { ?>
+                            <option value="<?= $category["id"] ?>"><?= $category["name"] ?></option>
+                        <?php } ?>
                     <?php endforeach ?>
                 <?php else : ?>
                 <?php endif ?>
@@ -35,7 +39,11 @@
             <select name="domain" id="domain">
                 <?php if (!empty($domains) && is_array($domains)) : ?>
                     <?php foreach ($domains as $domain) : ?>
-                        <option value="<?= $domain["id"] ?>"><?= $domain["name"] ?></option>
+                        <?php if (esc($domain["name"]) == esc(get_cookie("domain"))) { ?>
+                            <option selected value="<?= $domain["id"] ?>"><?= $domain["name"] ?></option>
+                        <?php } else { ?>
+                            <option value="<?= $domain["id"] ?>"><?= $domain["name"] ?></option>
+                        <?php } ?>
                     <?php endforeach ?>
                 <?php else : ?>
                 <?php endif ?>

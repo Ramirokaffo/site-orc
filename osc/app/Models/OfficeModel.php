@@ -9,7 +9,6 @@ class OfficeModel extends Model
     protected $table = 'office';
     protected $primaryKey = 'id';
     protected $useAutoIncrement = true;
-    protected $useTimestamps = true;
 
 
 /**
@@ -31,13 +30,7 @@ protected $isHeadOffice;
     protected $allowedFields = ['country', 'city', 'location', "isHeadOffice", "long", "lat", "oscId"];
 
     protected $returnType = 'array';
-    protected $useSoftDeletes = true;
 
-    protected $dateFormat    = 'datetime';
-    protected $createdField  = 'created_at';
-    protected $updatedField  = 'updated_at';
-    protected $deletedField  = 'deleted_at';
-    
     public function getOffice($id = false)
     {
         if ($id === false) {

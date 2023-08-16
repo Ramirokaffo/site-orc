@@ -8,16 +8,24 @@
             <h3>Liens</h3>
             <ul type="none">
                 <li><?= anchor('/', 'Accueil') ?> </li>
-                <li><?= anchor('news', 'Associations') ?> </li>
-                <li><?= anchor('news', 'Évènements') ?> </li>
-                <li><?= anchor('news', 'Jobs') ?> </li>
-                <li><?= anchor('news', 'À Propos') ?> </li>
-                <li><?= anchor('news', 'Contacts') ?> </li>
+                <li><?= anchor('/', 'Associations') ?> </li>
+                <li><?= anchor('/', 'Évènements') ?> </li>
+                <li><?= anchor('/', 'Jobs') ?> </li>
+                <li><?= anchor('/', 'À Propos') ?> </li>
+                <li><?= anchor('/', 'Contacts') ?> </li>
             </ul>
         </div>
         <div class="footer-content-right">
-            <h3>NewsLetter</h3>
+            <h3>Newsletter</h3>
+            <div class="uk-margin">
+                <div class="uk-inline">
+                    <span class="uk-form-icon" uk-icon="icon: mail"></span>
+                    <input class="uk-input" type="text" aria-label="Not clickable icon">
+                    <a id="uk-form-icon-right" class="uk-form-icon uk-form-icon-flip" href="#" uk-icon="icon: arrow-right"></a>
+                </div>
+            <p>Enregistrez-vous pour avoir nos mises à jours</p>
 
+            </div>
         </div>
     </div>
     <div class="copy-right">

@@ -1,0 +1,15 @@
+
+header .uk-margin {
+    display: none;
+}
+
+/*****************************************************
+                MEDIA QUERIE PHONE
+ ******************************************************/
+
+ @media screen and (max-width: 901px) {
+    header .uk-margin {
+        display: none;
+    }
+
+ }

@@ -7,6 +7,7 @@
     <?= script_tag("js/uikit.js"); ?>
     <?= script_tag("js/uikit-icons.min.js"); ?>
     <?= link_tag("style.css"); ?>
+    <?= script_tag("script.js"); ?>
     <title><?= esc($title) ?></title>
 </head>
 
