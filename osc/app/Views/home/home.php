@@ -47,57 +47,71 @@
             <h2>Domaines</h2>
             <div class="start-line"></div>
             <?php if (!empty($domains) && is_array($domains)) : ?>
-
                 <?php foreach ($domains as $domain) : ?>
-
                     <h3><?= anchor("/oscByDm/" . $domain['id'], $domain['name']) ?></h3>
-
                 <?php endforeach ?>
-
             <?php else : ?>
-
                 <p class="no-categoryor-domain">Aucun Domaine correspondant trouvé</p>
-
             <?php endif ?>
         </div>
     </section>
     <section class="home-body-right">
+        <form class="category-domain-select-div-form" action="/oscByDm/none" method="get" id="domain-select-form">
+            <div class="category-domain-select-div">
+                <select class="domain-category-select" name="domain-select" id="domain-select">
+                    <?php if (!empty($domains) && is_array($domains)) : ?>
+                        <?php foreach ($domains as $domain) : ?>
+                            <option value="<?= esc($domain['id']) ?>"><?= anchor("/oscByDm/" . $domain['id'], $domain['name']) ?></option>
+                        <?php endforeach ?>
+                    <?php endif ?>
+                </select>
+        </form>
+        <div class="category-domain-select-space"></div>
+        <form class="category-domain-select-div-form" action="/oscByCategory/none" method="get" id="category-select-form">
+            <select class="domain-category-select" name="category-select" id="category-select">
+                <?php if (!empty($categories) && is_array($categories)) : ?>
+                    <?php foreach ($categories as $category) : ?>
+                        <option value="<?= esc($category['id']) ?>"><?= anchor("/oscByCategory/" . $category['id'], $category['name']) ?></option>
+                    <?php endforeach ?>
+                <?php endif ?>
+            </select>
+        </form>
+</div>
+<?php if (!empty($oscs) && is_array($oscs)) : ?>
 
-        <?php if (!empty($oscs) && is_array($oscs)) : ?>
+    <?php foreach ($oscs as $osc) : ?>
 
-            <?php foreach ($oscs as $osc) : ?>
-
-                <a href="/osc/<?= esc($osc['id']) ?>">
-                    <li class="one-osc">
+        <a href="/osc/<?= esc($osc['id']) ?>">
+            <li class="one-osc">
+                <div>
+                    <div class="osc-logo-container">
+                        <div class="osc-logo" style="background-image: url('<?= base_url('file/image/frg7.jpg'); ?>')">
+                        </div>
+                    </div>
+                    <div class="osc-right">
                         <div>
-                            <div class="osc-logo-container">
-                                <div class="osc-logo" style="background-image: url('<?= base_url('file/image/frg7.jpg'); ?>')">
-                                </div>
+                            <div class="osc-header">
+                                <p>
+                                    <?= esc($osc['country']) ?> .
+                                    <?= esc($osc['city']) ?> .
+                                    <?= esc($osc['category_name']) ?>
+                                </p>
                             </div>
-                            <div class="osc-right">
-                                <div>
-                                    <div class="osc-header">
-                                        <p>
-                                            <?= esc($osc['country']) ?> .
-                                            <?= esc($osc['city']) ?> .
-                                            <?= esc($osc['category_name']) ?>
-                                        </p>
-                                    </div>
-                                    <div class="osc-title">
-                                        <b> <?= esc($osc['name']) ?></b>
-                                    </div>
-                                </div>
+                            <div class="osc-title">
+                                <b> <?= esc($osc['name']) ?></b>
                             </div>
                         </div>
-                        <hr>
-                    </li>
-                </a>
-            <?php endforeach ?>
+                    </div>
+                </div>
+                <hr>
+            </li>
+        </a>
+    <?php endforeach ?>
 
-        <?php else : ?>
-            <p class="no-osc-to-show">Aucune organisation à afficher</p>
-        <?php endif ?>
-        </ul>
-    </section>
+<?php else : ?>
+    <p class="no-osc-to-show">Aucune organisation à afficher</p>
+<?php endif ?>
+</ul>
+</section>
 </div>
 <?= $this->endSection() ?>

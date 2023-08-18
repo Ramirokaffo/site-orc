@@ -1,7 +1,45 @@
 
+:root {
+    --main-color: rgb(0, 102, 83);
+    --main-font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
 header .uk-margin {
     display: none;
 }
+
+.footer-content-right h3 {
+    padding-left: 0px;
+  }
+
+  .footer-content-right p {
+    color: rgb(108, 107, 107);
+  }
+
+  .footer-content-right a {
+    color: var(--main-color);
+    text-align: right;
+    align-self: flex-end;
+    margin-bottom: 10px;
+    font-size: 18px;
+    display: block;
+    text-decoration: none;
+  }
+
+    .uk-inline input {
+        margin-bottom: 10px;
+        border: 1px solid white;
+        height: 30px;
+    }
+
+    .uk-inline input:focus {
+        background-color: white;
+    }
+
+    .uk-input {
+        background-color: white;
+    }
+
 
 /*****************************************************
                 MEDIA QUERIE PHONE

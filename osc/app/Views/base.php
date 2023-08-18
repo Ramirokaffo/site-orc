@@ -15,9 +15,7 @@
     <?= $this->include('templates/header') ?>
     <div class="uk-section uk-light">
         <div class="main-content">
-
         <?= $this->renderSection('content') ?>
-
         </div>
     </div> 
     <?= $this->include('templates/footer') ?>

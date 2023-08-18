@@ -49,6 +49,12 @@ class Osc extends BaseController
 
     public function getByDomain($domainId)
     {
+        helper(['form', 'url']);
+        if ($domainId == "none") {
+            $expecteddomainId = $this->request->getVar("domain-select");
+                $domainId = $expecteddomainId;
+            }
+        helper(['form', 'url']);
         $oscModel = model(OscModel::class);
         $categoryModel = model(CategoryModel::class);
         $domainModel = model(DomainModel::class);
@@ -66,6 +72,12 @@ class Osc extends BaseController
 
     public function getByCategory($categoryId)
     {
+        helper(['form', 'url']);
+        if ($categoryId == "none") {
+            $expectedCategoryId = $this->request->getVar("category-select");
+                $categoryId = $expectedCategoryId;
+        }
+
         $oscModel = model(OscModel::class);
         $categoryModel = model(CategoryModel::class);
         $domainModel = model(DomainModel::class);

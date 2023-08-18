@@ -23,6 +23,10 @@
                     <input class="uk-input" type="text" aria-label="Not clickable icon">
                     <a id="uk-form-icon-right" class="uk-form-icon uk-form-icon-flip" href="#" uk-icon="icon: arrow-right"></a>
                 </div>
+                <!-- <h6>Envoyer -></h6> -->
+            <div class="subscribe-mail2">
+            <?= anchor('/', 'Envoyer ->') ?>
+            </div>
             <p>Enregistrez-vous pour avoir nos mises à jours</p>
 
             </div>
