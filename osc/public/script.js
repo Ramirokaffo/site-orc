@@ -49,4 +49,3 @@ window.addEventListener("load", function () {
 // console.log("Je suis ici")
 // const geolocation_button = document.getElementById("geolocation-btn");
 // console.log("geolocation_button: ", geolocation_button)
-

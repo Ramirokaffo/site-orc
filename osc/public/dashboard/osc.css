@@ -1,0 +1,128 @@
+
+:root {
+    --main-color: rgb(0, 102, 83);
+    --main-font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.osc-header {
+    display: flex;
+    flex-direction: row-reverse;
+    align-content: center;
+}
+
+.osc-header .uk-search-default .uk-search-input {
+    background-color: white !important;
+    color: black;
+}
+
+
+
+.uk-overflow-auto {
+   padding: 20px;
+   border-radius: 20px;
+   border: 1px solid var(--main-color);
+}
+
+
+.uk-overflow-auto thead th {
+
+    /* background-color: var(--main-color); */
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    margin: 0px 2px;
+    /* padding: 0px 10px; */
+
+}
+
+.uk-overflow-auto thead tr th {
+    font-weight: bold;
+    color: black;
+
+}
+
+.uk-overflow-auto tbody tr:hover {
+    background-color: rgba(0, 102, 83, 0.2) !important;
+    border-radius: 10px;
+
+}
+
+.uk-overflow-auto tbody .even {
+    background-color: rgba(29, 29, 27, 0.03);
+}
+
+
+.pagination-area {
+    text-align: center;
+    margin: auto;
+    margin-top: 50px;
+}
+
+.pagination {
+    margin: auto;
+    display: inline;
+    text-align: center;
+
+}
+
+.pagination li {
+    display: inline;
+    padding: 10px;
+    margin: 5px;
+    text-align: center;
+}
+
+.pagination li:hover {
+    cursor: pointer;
+}
+
+.pagination li a {
+    color: var(--main-color);
+    text-align: center;
+
+}
+
+.pagination li a:hover {
+    color: black;
+    text-decoration: none;
+
+}
+
+
+.pagination li:not(:has(span)) {
+    background-color: white;
+    border-radius: 50%;
+    height: 100px;
+    width: 100px;
+    padding: 10px;
+    border: 1px solid var(--main-color);
+  }
+
+  .pagination li:not(:has(span)):hover {
+    background-color: rgba(0, 102, 83, 0.2);
+  }
+
+  .pagination li:has(span) {
+    background-color: var(--main-color);
+    border-radius: 3px;
+    
+  }
+
+  .pagination li:has(span) a {
+    color: white;
+
+  }
+
+  .pagination .active {
+    background-color: var(--main-color);
+  }
+
+  .pagination .active:hover {
+    background-color: rgba(0, 102, 83, 0.2);
+
+  }
+
+  .pagination .active a {
+    color: white;
+ 
+
+  }

@@ -3,6 +3,8 @@
         <div class="footer-content-left">
             <img src="<?= base_url('file/image/yoonu_logo_frg_whhite.png'); ?>" alt="">
             <h5>Nous assurons la présence en ligne des Organismes de la socitété Civile</h5>
+    <div class="footer-add-org-button"><?= anchor('osc/create/1/none/0', 'Enregistrer votre Organisation') ?></div>
+
         </div>
         <div class="footer-content-center">
             <h3>Liens</h3>

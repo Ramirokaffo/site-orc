@@ -1,0 +1,247 @@
+
+:root {
+    --main-color: rgb(0, 102, 83);
+    --main-font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    background-color: rgba(0, 102, 83, 0.05);
+
+}
+.super-body-div {
+    display: flex;
+    /* height: 100%; */
+}
+
+
+.super-left-body {
+    flex: 2;
+    background-color: rgba(0, 102, 83, 0.05);
+    /* box-shadow: rgba(44, 187, 99, .35) 0 -25px 18px -14px inset, rgba(44, 187, 99, .25) 0 1px 2px, rgba(44, 187, 99, .25) 0 2px 4px, rgba(44, 187, 99, .25) 0 4px 8px, rgba(44, 187, 99, .25) 0 8px 16px, rgba(44, 187, 99, .25) 0 16px 32px; */
+
+}
+
+.super-right-body {
+    flex: 9;
+    background-color: white;
+    /* box-shadow: rgba(44, 187, 99, .35) 0 -25px 18px -14px inset, rgba(44, 187, 99, .25) 0 1px 2px, rgba(44, 187, 99, .25) 0 2px 4px, rgba(44, 187, 99, .25) 0 4px 8px, rgba(44, 187, 99, .25) 0 8px 16px, rgba(44, 187, 99, .25) 0 16px 32px; */
+
+}
+
+.sidebar-header {
+    text-align: center;
+    padding: 20px 0px;
+}
+
+.sidebar-content {
+    padding: 10px 10px;
+    margin: auto 10px;
+    background-color: white;
+    height: 100%;
+    border-radius: 10px;
+    /* box-shadow: rgba(44, 187, 99, .35) 0 -25px 18px -14px inset, rgba(44, 187, 99, .25) 0 1px 2px, rgba(44, 187, 99, .25) 0 2px 4px, rgba(44, 187, 99, .25) 0 4px 8px, rgba(44, 187, 99, .25) 0 8px 16px, rgba(44, 187, 99, .25) 0 16px 32px; */
+    /* transform: scale(1.05) rotate(-1deg); */
+    
+}
+
+.sidebar-content div {
+    padding: 5px 5px;
+    margin: 10px 0px;
+    /* background-color: red; */
+}
+
+.sidebar-content-element {
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+    border-radius: 10px;
+}
+
+.sidebar-content-element:hover {
+    background-color: rgba(0, 102, 83, 0.1);
+    border-radius: 10px;
+
+}
+
+.sidebar-content-element a:hover {
+    text-decoration: none;
+
+}
+
+.sidebar-content div a {
+    display: flex;
+    align-content: space-between;
+    color: var(--main-color);
+    font-weight: bold;
+}
+
+.sidebar-content div a div{
+    flex: 6;
+    /* background-color: var(--main-color); */
+    text-align: right;
+    text-align: left;
+
+
+}
+
+#active-sidebar-element {
+    background-color: var(--main-color);
+}
+
+#active-sidebar-element a {
+    color: white;
+}
+
+
+.one-action-icon {
+    flex: 1;
+    text-align: right;
+    line-height: 100%;
+    margin: auto;
+}
+
+.sidebar-content .uk-icon svg circle, header .uk-icon svg path, header .uk-icon svg polyline {
+    stroke-width: 2px;
+}
+
+
+/* ************************************************************
+            header
+*************************************************************** */
+
+
+header {
+    display: flex;
+    align-content: space-between;
+    padding: 20px;
+    background-color: var(--main-color);
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    height: 180px;
+
+}
+
+.search-section, .user-profil {
+    flex: 1;
+    /* background-color: brown; */
+
+}
+.uk-search-default .uk-search-input {
+    /* background-color: rgba(255, 255, 255, 0.2); */
+    background-color: rgba(0, 0, 0, 0.4);
+    color: white;
+}
+
+.uk-search-default .uk-search-input:focus {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+
+.uk-search-input {
+    border-radius: 20px;
+    /* background-color: brown; */
+}
+
+header .uk-icon {
+    margin: 0px 10px;
+}
+header .uk-icon svg circle, header .uk-icon svg path, header .uk-icon svg polyline {
+    stroke-width: 2px;
+    /* stroke: white; */
+    color: white;
+    /* fill: blue; */
+}
+
+
+.user-profil {
+    text-align: right;
+}
+
+
+
+/* ************************************************************
+            content
+*************************************************************** */
+
+.content {
+    background-color: white;
+    position: relative;
+    height: 800px;
+    /* width: 100%; */
+    top: -130px;
+    margin: 0px 30px;
+    border-radius: 20px;
+
+}
+
+.super-statistic-div {
+    background-color: rgba(0, 102, 83, 0.05);   
+    padding: 10px;
+    height: 100%;
+
+}
+
+.statistic-div {
+    display: flex;
+    align-content: space-between;
+    padding: 10px 10px;
+
+}
+
+.statistic-div div {
+    flex: 1;
+    height: 200px;
+    margin: 5px 10px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+    gap: 12px;
+}
+
+/* .statistic-div div:c {
+    background-color: blue;
+} */
+
+.semi-line3, .semi-line1, .semi-line2 {
+    background-color: var(--main-color);
+    width: 50%;
+    height: 5px;
+    margin: 10px 0px;
+    padding: 0px;
+
+}
+
+.semi-line1 {
+    background-color: var(--main-color);
+
+}
+
+.semi-line2 {
+    background-color: orange;
+
+}
+
+.semi-line3 {
+    background-color: rgb(29, 29, 27);
+
+}
+
+.statistic-div h2 {
+    color: var(--main-color);
+    font-weight: bold;
+    /* background-color: rebeccapurple; */
+    margin: 0px;
+
+}
+
+.statistic-div h3, .statistic-div h4 {
+    /* background-color: green; */
+    margin: 0px;
+}
+

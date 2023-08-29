@@ -20,7 +20,12 @@ class Home extends BaseController
                 'domains'  => $domainModel->getDomain(),
                 "miniSearchInput" => '',
                 "searchInput" => '',
-                'oscs' => $oscModel->getOsc(),
+                "selectedCatgoryId" => 'none',
+                "selectedDomainId" => 'none',
+                "verifyOscCount" => $oscModel->getOscByStatus(1)->countAllResults(),
+                "unVerifyOscCount" => $oscModel->getOscByStatus(0)->countAllResults(),
+                'oscs' => $oscModel->getOsc()->paginate(10),
+                'pager' => $oscModel->pager,
                 'title' => "Page d'acceuil YOONU",
             ];
         return view('home/home', $data);
@@ -44,16 +49,26 @@ class Home extends BaseController
                     "searchInput" => $searchInput,
                     'domains'  => $domainModel->getSearchResult($miniSearchInput),
                     'title' => "Resultat de recherche",
-                    'oscs' =>  $oscModel->getOsc(),
+                    "selectedCatgoryId" => 'none',
+                    "selectedDomainId" => 'none',
+                    "verifyOscCount" => $oscModel->getOscByStatus(1)->countAllResults(),
+                    "unVerifyOscCount" => $oscModel->getOscByStatus(0)->countAllResults(),
+                    'oscs' =>  $oscModel->getOsc()->paginate(10),
+                    'pager' =>  $oscModel->pager,
                 ];
         } else {
             $data = [
                 'categories'  => $categoryModel->getCategory(),
                 "miniSearchInput" => $miniSearchInput,
                 "searchInput" => $searchInput,
+                "selectedCatgoryId" => 'none',
+                "selectedDomainId" => 'none',
                 'domains'  => $domainModel->getDomain(),
+                "verifyOscCount" => $oscModel->getOscByStatus(1)->countAllResults(),
+                "unVerifyOscCount" => $oscModel->getOscByStatus(0)->countAllResults(),
                 'title' => "Resultat de recherche",
-                'oscs' =>  $oscModel->getSearchResult($searchInput),
+                'oscs' =>  $oscModel->getSearchResult($searchInput)->paginate(10),
+                'pager' =>  $oscModel->pager,
             ];
         }  
             return view('home/home', $data);

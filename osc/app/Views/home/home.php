@@ -3,8 +3,6 @@
 <?= $this->section('content') ?>
 <div class="home-head" style="background-image: url('<?= base_url('file/image/banniere_acceuil.png'); ?>');">
 
-
-
     <h1>Découvrez les Organisations de la Société Civile</h1>
 
     <form class="search-section" action="/search" method="get">
@@ -29,11 +27,12 @@
             <div class="start-line"></div>
 
             <?php if (!empty($categories) && is_array($categories)) : ?>
-
                 <?php foreach ($categories as $category) : ?>
-
+                    <?php if ($selectedCatgoryId == $category["id"]) { ?>
+                    <h3 class="selected-category-line"><?= anchor("/oscByCategory/" . $category["id"], $category['name']) ?></h3>
+                    <?php } else { ?>
                     <h3><?= anchor("/oscByCategory/" . $category["id"], $category['name']) ?></h3>
-
+                    <?php } ?>
                 <?php endforeach ?>
 
             <?php else : ?>
@@ -48,7 +47,11 @@
             <div class="start-line"></div>
             <?php if (!empty($domains) && is_array($domains)) : ?>
                 <?php foreach ($domains as $domain) : ?>
-                    <h3><?= anchor("/oscByDm/" . $domain['id'], $domain['name']) ?></h3>
+                    <?php if ($selectedDomainId == $domain["id"]) { ?>
+                    <h3 class="selected-category-line"><?= anchor("/oscByDm/" . $domain['id'], $domain['name']) ?></h3>
+                    <?php } else { ?>
+                        <h3><?= anchor("/oscByDm/" . $domain['id'], $domain['name']) ?></h3>
+                    <?php } ?>
                 <?php endforeach ?>
             <?php else : ?>
                 <p class="no-categoryor-domain">Aucun Domaine correspondant trouvé</p>
@@ -61,7 +64,11 @@
                 <select class="domain-category-select" name="domain-select" id="domain-select">
                     <?php if (!empty($domains) && is_array($domains)) : ?>
                         <?php foreach ($domains as $domain) : ?>
-                            <option value="<?= esc($domain['id']) ?>"><?= anchor("/oscByDm/" . $domain['id'], $domain['name']) ?></option>
+                            <?php if ($selectedDomainId == $domain["id"]) { ?>
+                                <option value="<?= esc($domain['id']) ?>" selected><?= anchor("/oscByDm/" . $domain['id'], $domain['name']) ?></option>
+                    <?php } else { ?>
+                        <option value="<?= esc($domain['id']) ?>"><?= anchor("/oscByDm/" . $domain['id'], $domain['name']) ?></option>
+                    <?php } ?>
                         <?php endforeach ?>
                     <?php endif ?>
                 </select>
@@ -71,7 +78,11 @@
             <select class="domain-category-select" name="category-select" id="category-select">
                 <?php if (!empty($categories) && is_array($categories)) : ?>
                     <?php foreach ($categories as $category) : ?>
+                        <?php if ($selectedCatgoryId == $category["id"]) { ?>
+                            <option value="<?= esc($category['id']) ?>" selected><?= anchor("/oscByCategory/" . $category['id'], $category['name']) ?></option>
+                    <?php } else { ?>
                         <option value="<?= esc($category['id']) ?>"><?= anchor("/oscByCategory/" . $category['id'], $category['name']) ?></option>
+                    <?php } ?>
                     <?php endforeach ?>
                 <?php endif ?>
             </select>
@@ -113,5 +124,21 @@
 <?php endif ?>
 </ul>
 </section>
+</div>
+<div class="pagination-area">
+    <?= $pager->links() ?>
+</div>
+<div class="super-statistic">
+    <div class="statistic" style="background-image: url('<?= base_url('file/image/GT.jpg'); ?>');">
+        <div>
+            <span><?= esc($verifyOscCount) ?></span>
+            <p>Organismes vérifiés</p>
+        </div>
+        <div>
+            <span><?= esc($unVerifyOscCount) ?></span>
+            <p>Organismes non-vérifiés</p>
+        </div>
+        <!-- <div>74</div> -->
+    </div>
 </div>
 <?= $this->endSection() ?>

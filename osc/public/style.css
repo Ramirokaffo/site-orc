@@ -13,6 +13,10 @@ body {
     position: relative;
 }
 
+.uk-section {
+    padding-bottom: 0px !important;
+}
+
 /****************************************************************************
              HEADER
 *****************************************************************************/
@@ -26,6 +30,7 @@ header {
     background-color: white;
     padding-top: 15px;
     padding-bottom: 10px;
+    /* border: 1px solid rgba(0, 102, 83, 0.1); */
 }
 
 .yoonu-logo {
@@ -126,6 +131,7 @@ nav input[type=checkbox]:checked~ul {
 
 .main-content {
     width: 100%;
+    margin: 0px;
 }
 
 /****************************************************************************
@@ -137,6 +143,7 @@ nav input[type=checkbox]:checked~ul {
     height: 400px;
     width: 100%;
     text-align: center;
+    background-color: rgba(1, 76, 1, 0.01);
 
 }
 
@@ -187,6 +194,7 @@ nav input[type=checkbox]:checked~ul {
     margin: auto;
     display: flex;
     padding: 10px 0px;
+    /* background-color: red; */
 }
 
 .home-body .home-body-left {
@@ -244,8 +252,21 @@ nav input[type=checkbox]:checked~ul {
     cursor: pointer;
 }
 
+
 .home-body div h3 a:hover {
     color: black;
+}
+.selected-category-line {
+    background-color: var(--main-color);
+    border-radius: 5px;
+}
+
+.selected-category-line a {
+    color: white !important;
+}
+
+.selected-category-line:hover {
+   background-color: rgba(0, 102, 83, 0.8) !important;
 }
 
 .osc-category,
@@ -366,8 +387,6 @@ nav input[type=checkbox]:checked~ul {
 
 .osc-right div .osc-header ul span {
     border-radius: 50%;
-    /* color: green; */
-    /* background-color: rebeccapurple; */
     height: 10px;
     width: 10px;
 }
@@ -376,6 +395,7 @@ nav input[type=checkbox]:checked~ul {
     display: inline;
     font-size: 13px;
     color: rgba(0, 0, 0, 0.5);
+    text-decoration: none;
 }
 
 
@@ -387,7 +407,7 @@ nav input[type=checkbox]:checked~ul {
 }
 
 .one-osc div .osc-right div .osc-title b {
-    font-size: 23px;
+    font-size: 18px;
 }
 
 
@@ -399,9 +419,129 @@ nav input[type=checkbox]:checked~ul {
     margin-top: 50px;
 }
 
+.pagination-area {
+    text-align: center;
+    margin: auto;
+    margin-top: 50px;
+}
+
+.pagination {
+    margin: auto;
+    display: inline;
+    text-align: center;
+
+}
+
+.pagination li {
+    display: inline;
+    padding: 10px;
+    margin: 5px;
+    text-align: center;
+}
+
+.pagination li:hover {
+    cursor: pointer;
+}
+
+.pagination li a {
+    color: var(--main-color);
+    text-align: center;
+
+}
+
+.pagination li a:hover {
+    color: black;
+    text-decoration: none;
+
+}
 
 
+.pagination li:not(:has(span)) {
+    background-color: white;
+    border-radius: 50%;
+    height: 100px;
+    width: 100px;
+    padding: 10px;
+    border: 1px solid var(--main-color);
+  }
 
+  .pagination li:not(:has(span)):hover {
+    background-color: rgba(0, 102, 83, 0.2);
+  }
+
+  .pagination li:has(span) {
+    background-color: var(--main-color);
+    border-radius: 3px;
+    
+  }
+
+  .pagination li:has(span) a {
+    color: white;
+
+  }
+
+  .pagination .active {
+    background-color: var(--main-color);
+  }
+
+  .pagination .active:hover {
+    background-color: rgba(0, 102, 83, 0.2);
+
+  }
+
+  .pagination .active a {
+    color: white;
+ 
+
+  }
+
+  .super-statistic {
+    background-color: black;
+  }
+
+
+  .statistic {
+    background-color: rgba(0, 102, 83, 0.1);
+    margin-top: 50px;
+    padding: 20px;
+    flex-direction: column;
+    opacity: 0.7;
+    text-align: center;
+    backdrop-filter: calc(20);
+    background-size: cover;
+    
+  }
+
+  .statistic div {
+    height: 300px;
+    width: 300px;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 40px;
+    padding: 20px;
+    text-align: center;
+    font-size: 50px;
+    font-weight: bold;
+    color: black;
+    border: 2px solid black;
+  }
+
+  .statistic div span {
+    padding-top: 50%;
+    font-size: 50px;
+    text-align: center;
+    margin-top: 59px;
+
+  }
+
+  .statistic div p {
+    padding-top: 30%;
+    font-size: 20px;
+    text-align: center;
+    margin: auto;
+
+
+  }
 
 
 /****************************************************************************
@@ -424,14 +564,20 @@ nav input[type=checkbox]:checked~ul {
     background-position: center;
     background-size: cover;
 
-
 }
 
 
 .one-osc-details-title {
-    height: 25%;
+    /* height: 25%; */
+    /* height: 50px; */
     width: 100%;
+    padding: 70px 0px;
+
+    /* display: none; */
+
     background-color: var(--main-color);
+    /* background-color: red; */
+
     position: relative;
     text-align: center;
 
@@ -439,9 +585,11 @@ nav input[type=checkbox]:checked~ul {
 
 .one-osc-details-title h2 {
     margin: auto;
-    line-height: 125px;
-    background-color: var(--main-color);
+    /* line-height: 125px; */
+    /* background-color: var(--main-color); */
     text-align: center;
+        /* background-color: red; */
+
 }
 
 .one-osc-details-logo {
@@ -472,14 +620,14 @@ nav input[type=checkbox]:checked~ul {
     margin-right: 50px;
     margin-top: 70px;
     margin-bottom: 0px;
-    text-align: center;
+    text-align: center;  
 }
 
 .one-osc-details-tap-item div {
     display: flex;
     padding: 0px;
     margin: auto;
-    width: 400px;
+    /* width: 400px; */
     border-right: 1px solid rgba(73, 72, 72, 0.2);
     border-left: 1px solid rgba(73, 72, 72, 0.2);
     text-align: center;
@@ -606,6 +754,7 @@ nav input[type=checkbox]:checked~ul {
 .details-title {
     text-align: left;
     margin: auto;
+    font-weight: bold;
 }
 
 .details-value {
@@ -968,7 +1117,7 @@ footer {
     padding: 10px 120px 25px 120px;
     text-align: left;
     font-family: A;
-    margin-top: 20px;
+    margin-top: 0px;
 
 }
 
@@ -993,6 +1142,17 @@ footer .footer-content {
 
 .footer-content-right h3 {
     padding-left: 0px;
+}
+
+.footer-add-org-button a {
+    background-color: var(--main-color);
+    width: 10px;
+    padding: 10px 30px;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-top: 150px;
+    color: white;
+
 }
 
 footer div div ul {
@@ -1081,7 +1241,7 @@ footer em {
 
 @media screen and (max-width: 901px) {
 
-    header {
+    #app-header {
         display: flex;
         position: fixed;
         width: 100%;
@@ -1089,6 +1249,7 @@ footer em {
         height: 50px;
         margin-top: 0px;
         padding-top: 0px;
+        align-content: space-between;
 
     }
     .nav-section {
@@ -1127,7 +1288,7 @@ footer em {
         text-align: center;
         flex: 1;
         position: relative;
-        background-color: blue !important;
+        /* background-color: blue !important; */
         /* display: none; */
     }
 
@@ -1234,7 +1395,7 @@ footer em {
                 ACCUEIL CONTENT
 *****************************************************************************/
 
-
+/* .home-head */
     .home-head h1 {
         font-size: 30px;
         margin: 50px 15%;
@@ -1249,7 +1410,7 @@ footer em {
     }
 
     .home-head .search-section input {
-        flex: 7;
+        flex: 6;
         font-size: 17px;
     }
 
@@ -1304,7 +1465,7 @@ footer em {
     }
 
     .one-osc div .osc-right div .osc-title b {
-        font-size: 19px;
+        font-size: 15px;
     }
 
     .no-osc-to-show {
@@ -1312,8 +1473,16 @@ footer em {
     }
     
 
+    .pagination li {
+        padding: 5px 0px;
+        margin: 5px;    
+    }
 
 
+    .statistic div {
+        height: 200px;
+        width: 200px;
+    }
 
     /****************************************************************************
                 OSC DETAILS CONTENT
@@ -1328,19 +1497,23 @@ footer em {
     }
 
     .one-osc-details-title {
-        height: 20%;
+        /* height: 18%; */
+    padding: 0px;
+    padding-top: 50px;
+
         text-align: center;
-    
+        /* background-color: red; */
     }
     
 
 .one-osc-details-title h2 {
     margin: auto;
-    padding-top: 20px;
-    line-height: 110px;
-    background-color: var(--main-color);
+    padding: 0px 0px;
+    /* line-height: 100px; */
+    height: 50px;
+    /* background-color: var(--main-color); */
     text-align: center;
-    font-size: 20px;
+    font-size: 17px;
 }
 
 
@@ -1350,9 +1523,12 @@ footer em {
 
 
     .one-osc-details-tap-item {
-        margin-left: 20px;
-        margin-right: 20px;
+            margin-left: 0px;
+    margin-right: 0px;
+        /* margin-left: 20px;
+        margin-right: 20px; */
         margin-top: 30px;
+        /* background-color: red; */
 
     }
 
@@ -1362,6 +1538,10 @@ footer em {
 
     .one-osc-about-tab-content {
         padding: 50px 20px;
+    }
+
+    .details-value {
+        font-size: 13px;
     }
 
 
@@ -1386,8 +1566,8 @@ footer em {
 
     .valid-step,
     .invalid-step {
-        height: 20px;
-        width: 20px;
+        height: 17px;
+        width: 17px;
         padding: 5px;
         line-height: 20px;
 
@@ -1395,8 +1575,8 @@ footer em {
 
     .valid-step-line,
     .invalid-step-line {
-        width: 60px;
-        margin: auto 5px;
+        width: 40px;
+        margin: auto 3px;
     }
 
 
@@ -1441,6 +1621,15 @@ footer em {
     .footer-content-center {
         display: none;
     }
+
+    .footer-add-org-button a {
+        width: 100%;
+        margin: auto;
+        padding: 10px 15px;
+        margin-top: 150px;
+    
+    }
+    
 
 
 }

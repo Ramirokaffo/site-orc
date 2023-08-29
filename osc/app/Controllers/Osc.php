@@ -6,27 +6,20 @@ use App\Models\OscModel;
 use App\Models\DomainModel;
 use App\Models\CategoryModel;
 use App\Models\ReclamationModel;
-use App\Models\UserModel;
+use App\Models\UsersModel;
 use App\Models\OfficeModel;
 use App\Models\ContactModel;
+use App\Models\OscUserModel;
 use CodeIgniter\Exceptions\PageNotFoundException;
 
 use function PHPUnit\Framework\isEmpty;
+
 
 class Osc extends BaseController
 {
     public function index()
     {
         $oscModel = model(OscModel::class);
-
-        $data = [
-            'news'  => $oscModel->getOsc(),
-            'title' => 'News archive',
-        ];
-
-        return view('templates/header', $data)
-            . view('news/index')
-            . view('templates/footer');
     }
 
     public function view($id = null)
@@ -37,14 +30,14 @@ class Osc extends BaseController
         $data['osc']["email"] = "";
         $data['title'] = "Détails sur l'OSC";
         $data['tap'] = "about";
-        if ($data['osc']["officeId"]) {
+        if (array_key_exists('officeId', $data['osc'])) {
             $data['osc']["phones"] = $contactModel->getOfficeContactByType($data['osc']["officeId"], "phone");
             $data['osc']["emails"] = $contactModel->getOfficeContactByType($data['osc']["officeId"], "email");
         }
         return view('osc/details', $data);
     }
 
-    
+
 
 
     public function getByDomain($domainId)
@@ -52,8 +45,8 @@ class Osc extends BaseController
         helper(['form', 'url']);
         if ($domainId == "none") {
             $expecteddomainId = $this->request->getVar("domain-select");
-                $domainId = $expecteddomainId;
-            }
+            $domainId = $expecteddomainId;
+        }
         helper(['form', 'url']);
         $oscModel = model(OscModel::class);
         $categoryModel = model(CategoryModel::class);
@@ -63,7 +56,12 @@ class Osc extends BaseController
             'domains'  => $domainModel->getDomain(),
             "miniSearchInput" => '',
             "searchInput" => '',
-            'oscs' =>  $oscModel->getByDomain($domainId),
+            "selectedCatgoryId" => 'none',
+            "selectedDomainId" => $domainId,
+            "verifyOscCount" => $oscModel->getOscByStatus(1)->countAllResults(),
+            "unVerifyOscCount" => $oscModel->getOscByStatus(0)->countAllResults(),
+            'oscs' =>  $oscModel->getByDomain($domainId)->paginate(10),
+            'pager'  => $oscModel->pager,
             'title' => "Affichage par domaine",
         ];
         return view('home/home', $data);
@@ -75,7 +73,7 @@ class Osc extends BaseController
         helper(['form', 'url']);
         if ($categoryId == "none") {
             $expectedCategoryId = $this->request->getVar("category-select");
-                $categoryId = $expectedCategoryId;
+            $categoryId = $expectedCategoryId;
         }
 
         $oscModel = model(OscModel::class);
@@ -86,7 +84,12 @@ class Osc extends BaseController
             'domains'  => $domainModel->getDomain(),
             "searchInput" => '',
             "miniSearchInput" => '',
-            'oscs' =>  $oscModel->getByCategory($categoryId),
+            "selectedCatgoryId" => $categoryId,
+            "selectedDomainId" => "none",
+            "verifyOscCount" => $oscModel->getOscByStatus(1)->countAllResults(),
+            "unVerifyOscCount" => $oscModel->getOscByStatus(0)->countAllResults(),
+            'oscs' =>  $oscModel->getByCategory($categoryId)->paginate(10),
+            'pager' =>  $oscModel->pager,
             'title' => "Affichage par Catégorie",
         ];
         return view('home/home', $data);
@@ -104,9 +107,10 @@ class Osc extends BaseController
         $categoryModel = model(CategoryModel::class);
         $reclamationModel = model(ReclamationModel::class);
         $oscModel = model(OscModel::class);
-        $userModel = model(UserModel::class);
+        $userModel = model(UsersModel::class);
         $officeModel = model(OfficeModel::class);
         $contactModel = model(ContactModel::class);
+        $oscUserModel = model(OscUserModel::class);
 
         $data["oscId"] = $oscId;
         if (!$this->request->is('post')) {
@@ -253,9 +257,12 @@ class Osc extends BaseController
                                 'webSite' => get_cookie("webSite"),
                                 'categoryId' => get_cookie("category"),
                                 'domainId' => get_cookie("domain"),
-                                'userId' => $userId,
                             ]);
                             $lastOscId = $oscModel->insertID();
+                            $oscUserModel->save([
+                                'userId' => $userId,
+                                'oscId' => $lastOscId,
+                            ]);
                             $officeModel->save([
                                 'location' => get_cookie("location"),
                                 'country' => get_cookie("country"),
@@ -305,23 +312,23 @@ class Osc extends BaseController
                                 'userId' => $userId,
                             ]);
                         }
-                        // delete_cookie("fullname");
-                        // delete_cookie("position");
-                        // delete_cookie("email");
-                        // delete_cookie("name");
-                        // delete_cookie("matricule");
-                        // delete_cookie("creationDate");
-                        // delete_cookie("category");
-                        // delete_cookie("domain");
-                        // delete_cookie("phoneNumber1");
-                        // delete_cookie("phoneNumber2");
-                        // delete_cookie("webSite");
-                        // delete_cookie("oscEmail");
-                        // delete_cookie("country");
-                        // delete_cookie("city");
-                        // delete_cookie("location");
-                        // delete_cookie("long");
-                        // delete_cookie("lat");
+                        delete_cookie("fullname");
+                        delete_cookie("position");
+                        delete_cookie("email");
+                        delete_cookie("name");
+                        delete_cookie("matricule");
+                        delete_cookie("creationDate");
+                        delete_cookie("category");
+                        delete_cookie("domain");
+                        delete_cookie("phoneNumber1");
+                        delete_cookie("phoneNumber2");
+                        delete_cookie("webSite");
+                        delete_cookie("oscEmail");
+                        delete_cookie("country");
+                        delete_cookie("city");
+                        delete_cookie("location");
+                        delete_cookie("long");
+                        delete_cookie("lat");
                         return view('form/osc/finish', $data);
                     }
                 }
@@ -331,21 +338,4 @@ class Osc extends BaseController
         }
     }
 
-
-    public function goTo($to = false)
-    {
-        helper(['form', 'url']);
-
-        echo "Je suis ici la 
-skjdnbsdfnmns
-asdsjknbndjkbnsfdhjbnwesi
-hjbrjefgdihjbwshknbjgqhekbgfihkwjbgq
-eihwjbvgiheqkwbsdghjbwgfs
-qhjvdgiyhkqbw";
-        $data["step"] = $to;
-        $data["title"] = "Creer une Organisation";
-        return redirect()->back()->withInput();
-        // return redirect()->to('form/osc/create'.$to);
-
-    }
 }

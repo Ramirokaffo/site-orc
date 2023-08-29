@@ -33,11 +33,13 @@ use App\Controllers\Page;
 use App\Controllers\News;
 use App\Controllers\Osc;
 use App\Controllers\Home;
+use App\Controllers\User;
 
 
 $routes->get('/', 'Home::index');
-// $routes->get('/', 'Home::index');
-// $routes->get(':page', "Page::view");
+$routes->get('dashboar', [User::class, 'dashboard']);
+$routes->get('dashboar/search/(:segment)', [User::class, 'search']);
+$routes->get('dashboar/(:segment)', [User::class, 'dashboard']);
 $routes->match(['get', 'post'], 'search', [Home::class, 'search']);
 $routes->match(['get', 'post'], 'news/create/(:segment)', [News::class, 'create']);
 $routes->match(['get', 'post'], 'osc/create/(:segment)/(:segment)/(:segment)', [Osc::class, 'create']);
