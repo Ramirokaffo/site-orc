@@ -21,8 +21,8 @@
                     <span class="one-action-icon" uk-icon="icon: chevron-right"></span>
                 </a>
             </div>
-            <div class="sidebar-content-element">
-                <a href="#">
+            <div class="sidebar-content-element" id=<?= $segment == "reclamation"? "active-sidebar-element": "" ?>>
+                <a href="/dashboar/reclamation">
                     <div>
                         <span uk-icon="icon:  info"></span>
                         Réclamations
@@ -39,8 +39,8 @@
                     <span class="one-action-icon" uk-icon="icon: chevron-right"></span>
                 </a>
             </div>
-            <div class="sidebar-content-element">
-                <a href="#">
+            <div class="sidebar-content-element" id=<?= $segment == "user"? "active-sidebar-element": "" ?>>
+                <a href="/dashboar/user">
                     <div>
                         <span uk-icon="icon:  users"></span>
                         Utilisateurs

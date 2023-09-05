@@ -23,7 +23,11 @@ class ReclamationModel extends Model
     public function getReclamation($id = false)
     {
         if ($id === false) {
-            return $this->findAll();
+            $query = $this->table('reclamation')
+                ->select('reclamation.*, domain.name AS domain_name, category.name AS category_name ')
+                ->join('category', 'category.id = reclamation.categoryId', 'LEFT')
+                ->join('domain', 'domain.id = reclamation.domainId', 'LEFT');
+            return $query;
         }
         $builder = $this->table('reclamation');
         $builder->select('reclamation.*, category.name as category_name, domain.name as domain_name');
@@ -62,12 +66,18 @@ class ReclamationModel extends Model
 
     public function getSearchResult($searchInput)
     {
-        $results = $this->select('reclamation.*, category.name as category_name')
-        // ->where("name", $searchInput)
-        ->like("reclamation.name", $searchInput)
-        ->join('category', 'category.id = reclamation.categoryId', 'left')
-        ->getReclamation();
-        return $results;
+        $builder = $this->table('osc');
+
+        $builder->select('reclamation.*, category.name as category_name');
+        $builder->join('category', 'category.id = osc.categoryId', 'left');
+        $builder->join('domain', 'domain.id = osc.domainId', 'left');
+        $builder->like('reclamation.name', $searchInput);
+        $builder->orLike('reclamation.description', $searchInput);
+        $builder->orLike('reclamation.country', $searchInput);
+        $builder->orLike('reclamation.country', $searchInput);
+        $builder->orLike('reclamation.location', $searchInput);
+        $builder->groupBy(['osc.id', "category.id", "domain.id", "office.id", "contact.id"]);
+        return $builder;
     }
 
 

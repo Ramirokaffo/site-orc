@@ -24,6 +24,10 @@
             </div>
         </div>
         <hr>
+        <div id="osc-evolution-chart">
+
+        </div>
+
     </div>
 </div>
 

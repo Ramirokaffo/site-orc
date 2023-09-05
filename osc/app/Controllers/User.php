@@ -28,33 +28,36 @@ class User extends BaseController
         $allOscCount = $oscModel->getOsc()->countAllResults();
         $data["allOscCount"] = $allOscCount;
         $data["segment"] = $segment;
+
         // Vérifier si le fichier existe
     // if (!file_exists('Views/dashboard/'.$segment)) {
         // Le fichier n'existe pas, donc renvoyer une erreur 404
     //     throw new \CodeIgniter\Exceptions\PageNotFoundException();
     // }
-    if ($segment == "osc") {
-        $categoryModel = model(CategoryModel::class);
-        $domainModel = model(DomainModel::class);
+    switch ($segment) {
+        case "osc":
         $oscModel = model(OscModel::class);
         $data["oscs"] = $oscModel->getOsc()->paginate(21);
         $data["pager"] = $oscModel->pager;
-            // $data = [
-            //     'categories'  => $categoryModel->getCategory(),
-            //     'domains'  => $domainModel->getDomain(),
-            //     "miniSearchInput" => '',
-            //     "searchInput" => '',
-            //     "selectedCatgoryId" => 'none',
-            //     "selectedDomainId" => 'none',
-            //     "verifyOscCount" => $oscModel->getOscByStatus(1)->countAllResults(),
-            //     "unVerifyOscCount" => $oscModel->getOscByStatus(0)->countAllResults(),
-            //     'oscs' => $oscModel->getOsc()->paginate(10),
-            //     'pager' => $oscModel->pager,
-            //     'title' => "Page d'acceuil YOONU",
-            // ];
+        $data["searchInput"] = "";
+        break;
+        case "reclamation":
+            $reclamationModel = model(ReclamationModel::class);
+            $data["reclamations"] = $reclamationModel->getReclamation()->paginate(21);
+            $data["pager"] = $reclamationModel->pager;
+            $data["searchInput"] = "";
+            break;        
+        case "user":
+            $usersModel = model(UsersModel::class);
+            $data["users"] = $usersModel->paginate(21);
+            $data["pager"] = $usersModel->pager;
+            $data["searchInput"] = "";
+            break;        
+        default:
+            break;
     }
 
-    // Le fichier existe, donc le retourner
+    // return view('Highcharts-Dashboards-1.0.2/index.html',  $data);
     return view('dashboard/'.$segment,  $data);
     }
 
@@ -63,14 +66,34 @@ class User extends BaseController
     {
         helper(['form']);
         $searchInput = $this->request->getVar("searchInput");
-        if ($searchIn == "osc") {
-            $oscModel = model(OscModel::class);
-            $data["segment"] = "osc";
-            $oscModel = model(OscModel::class);
-            $data["oscs"] = $oscModel->getSearchResult($searchInput)->paginate(21);
-            $data["pager"] = $oscModel->pager;
-        return view('dashboard/osc',  $data);
+        switch ($searchIn) {
+            case 'osc':
+                $oscModel = model(OscModel::class);
+                $data["segment"] = "osc";
+                $data["searchInput"] = $searchInput;
+                $data["oscs"] = $oscModel->getSearchResult($searchInput)->paginate(21);
+                $data["pager"] = $oscModel->pager;
+            return view('dashboard/osc',  $data);
+            case 'reclamation':
+            $reclamationModel = model(ReclamationModel::class);
+                $data["segment"] = "osc";
+                $data["searchInput"] = $searchInput;
+                $data["reclamation"] = $reclamationModel->getSearchResult($searchInput)->paginate(21);
+                $data["pager"] = $reclamationModel->pager;
+            return view('dashboard/osc',  $data);
+            case 'user':
+            $reclamationModel = model(ReclamationModel::class);
+                $data["segment"] = "user";
+                $data["searchInput"] = $searchInput;
+                $data["reclamation"] = $reclamationModel->getSearchResult($searchInput)->paginate(21);
+                $data["pager"] = $reclamationModel->pager;
+            return view('dashboard/osc',  $data);
+            
+            default:
+                # code...
+                break;
         }
+
 
     }
 

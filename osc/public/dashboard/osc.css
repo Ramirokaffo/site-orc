@@ -40,14 +40,15 @@
 
 }
 
-.uk-overflow-auto tbody tr:hover {
-    background-color: rgba(0, 102, 83, 0.2) !important;
-    border-radius: 10px;
-
+.uk-overflow-auto tbody .even {
+    background-color: rgba(0, 102, 83, 0.03);
 }
 
-.uk-overflow-auto tbody .even {
-    background-color: rgba(29, 29, 27, 0.03);
+.uk-overflow-auto tbody tr:hover {
+    background-color: rgba(0, 102, 83, 0.2) !important;
+    /* background-color: rgba(29, 29, 27, 0.2); */
+    border-radius: 10px;
+
 }
 
 

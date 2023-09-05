@@ -38,6 +38,8 @@
         </div>
     </div>
     <?= $this->include('dashboard/footer') ?>
+    <?= script_tag("dashboard/chart-script.js"); ?>
+
 </body>
 
 </html>
